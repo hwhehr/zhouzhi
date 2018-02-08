@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block root %}<br>
+<form action="bundlingqq" method="post">
+<input type="text" name="user_qq">
+    {% csrf_token %}
+<input type="submit">
+</form>
+{% endblock %}

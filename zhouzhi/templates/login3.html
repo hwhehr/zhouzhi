@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>周知登录</title>
+    <link rel="shortcut icon" href="/static/00.ico">
+    <link rel="stylesheet" href="/static/dlzc/me.css" type="text/css">
+    <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script src="/static/dlzc/me.js"></script>
+</head>
+<body>
+<div id="page1">
+    <img src="/static/images/zcback.jpg" width="100%" height="100%" style="position:absolute;left:0;top:0;z-index:-1">
+    <div id="kuang">
+        {% if error %}
+{{ error|safe }}
+<h1>{% endif %}</h1>
+        <h1>&nbsp;&nbsp;登录</h1>
+        <br><br>
+        <form method="post" action="/login" onsubmit="return check()">
+            <h3>用户名：</h3>
+            <input name="name" type="text" id="name" onblur="checkName()" onfocus="focusName()">
+            <span id="span1"></span>
+            <h3>密码：</h3>
+            <input name="password" type="password" id="password" onfocus="focusPass()" onblur="checkPass()">
+            <span id="span2"></span>
+            {% csrf_token %}
+            <input type="submit" id="zc" value="登录"></input>
+        </form>
+    </div>
+</div>
+</body>
+</html>

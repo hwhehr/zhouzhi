@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.5, maximum-scale=2.0, user-scalable=yes" />
+    <title>周知</title>
+    <script>
+        if(!IsPC()){
+            window.location = "mobile/mm.html";
+        }
+        function IsPC() {//判断是否是PC
+
+            var userAgentInfo = navigator.userAgent;
+            var Agents = ["Android", "iPhone",
+                "SymbianOS", "Windows Phone",
+                "iPad", "iPod"];
+            var flag = true;
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
+    </script>
+    <link rel="stylesheet" href="/static/basic.css" type="text/css">
+    <link rel="shortcut icon" href="/static/00.ico">
+    <script type="text/javascript" src="/static/my.js"></script>
+</head>
+<div class="big">
+<body>
+<img src="/static/images/nw.jpg" width="100%" height="1000px" style="position:absolute;left:0;top:0;z-index:-1">
+
+<!--登录弹出框开始-->
+<div class="mask" id="hui"></div>
+<div class="tan" id="dlt">
+    <span id="guan">×</span>
+    <form action="/login" method="post">
+        {% if error %}
+{{ error }}
+<h1>{% endif %}</h1>
+        <h4>   用户名：</h4>
+    <input type="text" value="请输入用户名或邮箱" id="yhm" class="dlb0" name="name">
+    <h4>   密码：</h4>
+    <input type="password" placeholder="请输入密码" id="mm" class="dlb0" name="password">
+    <a href="#">忘记密码</a>
+    <button></button>
+            {% csrf_token %}
+    </form>
+</div>
+<!--登录弹出框结束-->
+<!--注册弹出-->
+
+<div id="kuang">
+    <form action="/register" method="post">
+        <span id="guan1">×</span>
+        <h3>邮箱：</h3>
+        <input type="text" name="email">
+        <h3>用户名：</h3>
+        <input type="text" name="name">
+        <h3>密码：</h3>
+        <input type="text" name="password">
+        {% csrf_token %}
+{#        <input type="submit"  value="确定">#}
+        <button id="zc">确 定</button>
+    </form>
+</div>
+
+<!--顶部登录注册那一行开始-->
+<div class="shortcut">
+        <div class="fr">
+            <ul>
+                {% if name %}
+                <li><a href="#" > 你好，{{ name }}</a></li>&nbsp;
+                <li class="line"></li>
+                 <li><a href="/logout" > 退出账号</a></li>
+                {% else %}
+                 <li><a href="#" id="oA1"> 你好，请登录</a></li>&nbsp;
+                <li class="line"></li>
+                 <li><a href="#" id="oA2" > 免费注册</a></li>
+                {% endif %}
+            </ul>
+        </div>
+</div>
+<!--顶部登录注册那一行结束-->
+
+<!--第一个搜索框开始-->
+<div class="search w">
+    <input type="text" value="啾一下就知道" id="jiu">
+    <button id="bjiu" >啾一下</button>
+</div>
+<!--第一个搜索结束-->
+
+
+<!--第二个框开始-->
+<div class="reci w">
+    <button id="rc"></button>
+</div>
+<!--第三个框开始-->
+<div class="wode w">
+<button></button>
+</div>
+</div>
+</body>
+</html>

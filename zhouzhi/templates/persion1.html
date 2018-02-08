@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block root %}
+ <a href="/change">修改密码</a>
+    <br>
+<h1>{{ name }}</h1>您好,您提出的问题有<br>
+{% for list in questions %}
+<a href="/answer?question={{ list }}">{{ list }}</a> <br>
+{% endfor %}
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>欢迎光临</title>
+</head>
+<body>
+{% if name %}
+<h1>hello   {{ name }}</h1>
+{% endif %}
+<h1>{{ title }}</h1>
+<h1>{{ content }}</h1>
+<form action="/search" method="post">
+    标题1<input type="text" name="title"><br>
+    内容<input type="text" name = "content"><br>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>
